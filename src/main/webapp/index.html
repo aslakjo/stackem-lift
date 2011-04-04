@@ -1,0 +1,24 @@
+<lift:surround with="default" at="content">
+    <lift:bind-at name="footer">
+        <span>Footer -- @aslakjo</span>
+    </lift:bind-at>
+
+    <h2>Stack'em!</h2>
+
+    <p><span class="lift:StackSnippet.started"></span></p>
+
+    <div id="push" class="column span-5">
+        <form class="lift:StackSnippet.push" method="post">
+            <span id="field"></span>
+            <input value="Push" type="submit"> </input>
+        </form>
+
+    </div>
+
+    <div id="list" class="column span-7 lift:StackSnippet.list"/>
+
+    <div id="pop" class="column span-5 last lift:StackSnippet.pop"/>
+
+
+</lift:surround>
+
