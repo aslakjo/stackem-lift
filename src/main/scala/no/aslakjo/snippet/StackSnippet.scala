@@ -4,38 +4,45 @@ import net.liftweb.util._
 import Helpers._
 
 import scala.collection.mutable.{Stack}
-import net.liftweb.http.{SessionVar, RequestVar,SHtml}
 import java.util.Date
+import net.liftweb.http.{StatefulSnippet, SessionVar, RequestVar, SHtml}
 
-object Stacker extends SessionVar(Stack[String]())
 object Timer extends RequestVar(new Date())
 
 trait StartedAt{
   def started = "*" #> <div style="color: #c1c1c1">{Timer.get}</div>
 }
 
-class StackSnippet extends StartedAt{
+class StackSnippet extends StartedAt with StatefulSnippet{
+  private val stack = new Stack[String]()
 
-  def push ={
+  val dispatch :DispatchIt = {
+    case "form" => form
+    case "started" => started
+  }
+
+  def form = {
     "#field" #> SHtml.text("", newElement => {
-      Stacker.get.push(newElement)
-      println(Stacker.get, newElement)
-    })
+      stack.push(newElement)
+      println(stack, newElement)
+    }) &
+
+    "#pop" #> SHtml.button("Pop", {
+      println(stack)
+      stack.pop
+    }) &
+    "#list *" #> {
+      println(stack)
+      stack
+    }
   }
 
-  def list = {
-    "#list *" #> Stacker.get
-  }
-  
-  def pop = {
-    "#pop" #> SHtml.button("Pop", Stacker.get.pop)
-  }
 }
 
 class StackCounter extends StartedAt{
 
   def size = {
-    "#count" #> <span>Antall: {Stacker.is.size}</span>
+    "#count" #> <span>Antall: (unable)</span>
   }
 
 }

@@ -7,21 +7,18 @@
 
     <p><span class="lift:StackSnippet.started"></span></p>
 
-    <div id="push" class="column span-5">
-        <form class="lift:StackSnippet.push" method="post">
+    <div class="lift:StackSnippet.form?form=post">
+        <div id="push" class="column span-5">
             <span id="field"></span>
             <input value="Push" type="submit"> </input>
-        </form>
+        </div>
 
-    </div>
-
-    <div class="column span-7">
+        <div class="column span-7">
             <ul>
-                <li id="list" class="lift:StackSnippet.list"></li>
+                <li id="list"></li>
             </ul>
-    </div>
-    <form method="post">
-        <div id="pop" class="column span-5 last lift:StackSnippet.pop"/>
+        </div>
+        <div id="pop" class="column span-5 last"/>
     </form>
 </lift:surround>
 
