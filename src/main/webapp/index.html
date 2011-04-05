@@ -8,10 +8,10 @@
     <p><span class="lift:StackSnippet.started"></span></p>
 
     <div id="push" class="column span-5">
-        <form class="lift:StackSnippet.push" method="post">
+        <div class="lift:StackSnippet.push?form=post">
             <span id="field"></span>
             <input value="Push" type="submit"> </input>
-        </form>
+        </div>
 
     </div>
 
@@ -19,9 +19,9 @@
             <ul>
                 <li id="list" class="lift:StackSnippet.list"></li>
             </ul>
+            <div id="graph" style="width: 300px; height:300px"/>
+            <span class="lift:StackGraph.graph"/>
     </div>
-    <form method="post">
-        <div id="pop" class="column span-5 last lift:StackSnippet.pop"/>
-    </form>
+    <div id="pop" class="column span-5 last lift:StackSnippet.pop?form=post"/>
 </lift:surround>
 

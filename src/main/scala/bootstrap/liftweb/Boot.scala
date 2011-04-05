@@ -6,11 +6,13 @@ import net.liftweb._
 import http._
 import sitemap.{SiteMap, Menu, Loc}
 import util.{ NamedPF }
+import net.liftweb.widgets.flot._
+
 
 
 class Boot {
   def boot {
-  
+
   
     // where to search snippet
     LiftRules.addToPackages("no.aslakjo")
@@ -25,10 +27,14 @@ class Boot {
     })
     
     LiftRules.setSiteMap(SiteMap(entries:_*))
+
     
     // set character encoding
     LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
 
     LiftRules.htmlProperties.default.set((r: Req) => new Html5Properties(r.userAgent))
+
+    //widgets
+    Flot.init
   }
 }
