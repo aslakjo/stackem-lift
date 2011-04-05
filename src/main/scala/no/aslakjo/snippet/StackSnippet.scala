@@ -24,11 +24,11 @@ class StackSnippet extends StartedAt{
   }
 
   def list = {
-    "#list" #> Stacker.get
+    "#list *" #> Stacker.get
   }
   
   def pop = {
-    "#pop" #> <span>pop</span>
+    "#pop" #> SHtml.button("Pop", Stacker.get.pop)
   }
 }
 
